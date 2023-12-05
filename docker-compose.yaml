@@ -1,0 +1,31 @@
+version: '3'
+services:
+  mysql-db:
+    image: mysql:latest
+    container_name: mysql-db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: busca_frete
+      MYSQL_USER: busca_frete
+      MYSQL_PASSWORD: 1234
+    ports:
+      - '3306:3306'
+    volumes:
+      - ./mysql_data:/var/lib/mysql
+
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: backend
+    restart: always
+    ports:
+      - '80:3000'
+    depends_on:
+      - mysql-db
+    environment:
+      DB_HOST: mysql-db
+      DB_USER: busca_frete
+      DB_PASSWORD: 1234
+      DB_NAME: busca_frete
