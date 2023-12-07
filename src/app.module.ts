@@ -9,7 +9,7 @@ import { FreightModule } from './freight/freight.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'host.docker.internal',
+      host: 'mysql-db',
       username: 'busca_frete',
       password: '1234',
       database: 'busca_frete',
