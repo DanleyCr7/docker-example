@@ -11,5 +11,7 @@ RUN npm install
 # Copie o restante dos arquivos do projeto
 COPY . /app
 
+EXPOSE 3000
+
 # Comando padrão para iniciar o servidor
 CMD ["npm" ,"start"]
